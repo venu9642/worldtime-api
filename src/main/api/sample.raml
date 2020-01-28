@@ -1,0 +1,43 @@
+#%RAML 1.0
+version: 1.0
+title: sample
+baseUri: http://localhost:8081/api
+
+
+/flight:
+  get:
+    description: get bod details
+    displayName: ....
+    queryParameters:
+     destination: 
+    responses:
+      200:
+        body:
+          application/json:
+            type: string
+            example: |
+                      {
+                      "flights": [
+                          {
+                              "code": "ER38sd",
+                              "price": 400,
+                              "origin": "MUA",
+                              "destination": "SFO",
+                              "departureDate": "2015/03/20",
+                              "planeType": "Boeing 737",
+                              "airlineName": "United",
+                              "emptySeats": 0
+                          },
+                          {
+                              "code": "ER39rk",
+                              "price": 945,
+                              "origin": "MUA",
+                              "destination": "SFO",
+                              "departureDate": "2015/09/11",
+                              "planeType": "Boeing 757",
+                              "airlineName": "United",
+                              "emptySeats": 54
+                          }
+                            ]   
+                          }
+            
