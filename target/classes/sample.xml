@@ -3,7 +3,7 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
-    <http:listener-config name="sample-httpListenerConfig" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config name="sample-httpListenerConfig" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
     <apikit:config name="sample-config" raml="sample.raml" consoleEnabled="false" doc:name="Router"/>
     <flow name="sample-main">
         <http:listener config-ref="sample-httpListenerConfig" path="/api/*" doc:name="HTTP"/>
@@ -16,6 +16,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     </flow>
     <flow name="get:/flight:sample-config">
         <set-payload value="{&#xA;&quot;flights&quot;: [&#xA;    {&#xA;        &quot;code&quot;: &quot;ER38sd&quot;,&#xA;        &quot;price&quot;: 400,&#xA;        &quot;origin&quot;: &quot;MUA&quot;,&#xA;        &quot;destination&quot;: &quot;SFO&quot;,&#xA;        &quot;departureDate&quot;: &quot;2015/03/20&quot;,&#xA;        &quot;planeType&quot;: &quot;Boeing 737&quot;,&#xA;        &quot;airlineName&quot;: &quot;United&quot;,&#xA;        &quot;emptySeats&quot;: 0&#xA;    },&#xA;    {&#xA;        &quot;code&quot;: &quot;ER39rk&quot;,&#xA;        &quot;price&quot;: 945,&#xA;        &quot;origin&quot;: &quot;MUA&quot;,&#xA;        &quot;destination&quot;: &quot;SFO&quot;,&#xA;        &quot;departureDate&quot;: &quot;2015/09/11&quot;,&#xA;        &quot;planeType&quot;: &quot;Boeing 757&quot;,&#xA;        &quot;airlineName&quot;: &quot;United&quot;,&#xA;        &quot;emptySeats&quot;: 54&#xA;    }&#xA;      ]   &#xA;    }" doc:name="Set Payload"/>
+        <logger message="&quot;Successfully complated &quot;" level="INFO" doc:name="Logger"/>
     </flow>
     <apikit:mapping-exception-strategy name="sample-apiKitGlobalExceptionMapping">
         <apikit:mapping statusCode="404">
